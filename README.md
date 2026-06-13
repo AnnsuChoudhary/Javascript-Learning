@@ -9,6 +9,7 @@ This repository contains my JavaScript learning journey, including notes, exerci
 
 ## Topics Covered
 
+- HTML & CSS Review
 - Variables & Data Types
 
 ## Goal
