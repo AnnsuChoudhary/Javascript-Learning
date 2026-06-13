@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperSissors</title>
+</head>
+<body>
+    <h1>Rock Paper Sissors</h1>
+
+    <button onclick="const compMove = Math.random();
+    let Move = '';
+    if(compMove >=0 && compMove < 1/3 ){
+        Move = 'Rock';
+    }
+    else if(compMove >= 1/3 && compMove < 2/3) {
+        Move = 'Paper';
+    }
+    else {
+        Move = 'Sissors';
+    }
+    console.log(Move);
+
+    let result = '';
+    if(Move === 'Rock') {
+        result = 'Tie';
+    }
+    else if(Move === 'Paper') {
+        result = 'You Lose';
+    }
+    else {
+        result = 'You Win';
+    }
+    alert(`You Picked Rock, Computer Picked ${Move}, ${result}`);
+    ">Rock</button>
+
+    <button onclick="const compMove = Math.random();
+    let Move = '';
+    if(compMove >=0 && compMove < 1/3 ){
+        Move = 'Rock';
+    }
+    else if(compMove >= 1/3 && compMove < 2/3) {
+        Move = 'Paper';
+    }
+    else {
+        Move = 'Sissors';
+    }
+    console.log(Move);
+
+    let result = '';
+    if(Move === 'Rock') {
+        result = 'You Win';
+    }
+    else if(Move === 'Paper') {
+        result = 'Tie';
+    }
+    else {
+        result = 'You Lose';
+    }
+    alert(`You Picked Paper, Computer Picked ${Move}, ${result}`);
+    ">Paper</button>
+
+    <button onclick="const compMove = Math.random();
+    let Move = '';
+    if(compMove >=0 && compMove < 1/3 ){
+        Move = 'Rock';
+    }
+    else if(compMove >= 1/3 && compMove < 2/3) {
+        Move = 'Paper';
+    }
+    else {
+        Move = 'Sissors';
+    }
+    console.log(Move);
+
+    let result = '';
+    if(Move === 'Rock') {
+        result = 'You Lose';
+    }
+    else if(Move === 'Paper') {
+        result = 'You Win';
+    }
+    else {
+        result = 'Tie';
+    }
+    alert(`You Picked Sissors, Computer Picked ${Move}, ${result}`);
+    ">Sissors</button>
+    
+    <script>
+
+    </script>
+    
+</body>
+</html>

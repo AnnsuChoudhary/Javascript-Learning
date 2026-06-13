@@ -10,15 +10,15 @@
     <button onclick="console.log(`Cart Quantity: ${CartQuantity} `)">Show Quantity</button>
     
     <button onclick="
-     CartQuantity = CartQuantity + 1; console.log(`Cart Quantity: ${CartQuantity} `)
+     CartQuantity += 1; console.log(`Cart Quantity: ${CartQuantity} `)
     ">Add to Cart</button>
     
     <button onclick="
-     CartQuantity = CartQuantity + 2; console.log(`Cart Quantity: ${CartQuantity} `)
+     CartQuantity += 2; console.log(`Cart Quantity: ${CartQuantity} `)
     ">+2</button>
     
     <button onclick="
-     CartQuantity = CartQuantity + 3; console.log(`Cart Quantity: ${CartQuantity} `)
+     CartQuantity += 3; console.log(`Cart Quantity: ${CartQuantity} `)
     ">+3</button>
     
     <button onclick="
@@ -26,7 +26,7 @@
      console.log('Cart was Reset'); console.log(`Cart Quantity: ${CartQuantity} `)
     ">Reset Cart</button>
 
-    <script>git add .
+    <script>
         let CartQuantity = 0;
     </script>
 </body>
