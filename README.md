@@ -11,6 +11,8 @@ This repository contains my JavaScript learning journey, including notes, exerci
 
 - HTML & CSS Review
 - Variables & Data Types
+- Build a Calculator
+- Rock Paper Sissor Game
 
 ## Goal
 
