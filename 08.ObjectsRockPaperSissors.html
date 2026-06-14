@@ -92,6 +92,8 @@
                 score.Ties++;
             }
 
+            localStorage.setItem('score', JSON.stringify(score));
+            
             alert(`You Picked ${playerMove}, Computer Picked ${Move}, ${result}
 Wins: ${score.Win}, Looses: ${score.Looses}, Ties: ${score.Ties}`);
         }
