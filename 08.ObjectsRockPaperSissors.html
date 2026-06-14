@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperSissors</title>
+</head>
+<body>
+    <h1>Rock Paper Sissors</h1>
+
+    <button onclick="
+    playGame('Rock');
+    ">Rock</button>
+
+    <button onclick="
+    playGame('Paper');
+    ">Paper</button>
+
+    <button onclick="
+    playGame('Sissors');
+    ">Sissors</button>
+
+    
+    
+    <button onclick="
+    score.Win = 0;
+    score.Looses = 0;
+    score.Ties = 0;
+    ">Reset Score</button>
+    <script>
+        
+        const score = {
+            Win : 0,
+            Looses : 0,
+            Ties : 0
+        }
+
+        function game(){
+            let compMove = Math.random();
+            let Move = '';
+            
+            if(compMove >=0 && compMove < 1/3 ){
+                Move = 'Rock';
+            }
+            else if(compMove >= 1/3 && compMove < 2/3) {
+                Move = 'Paper';
+            }
+            else {
+                Move = 'Sissors';
+            }
+            
+            return Move;
+        }
+
+        function playGame(playerMove){
+            let Move = game();
+            let result = '';
+            
+            if(playerMove === 'Rock'){
+                if(Move === 'Rock'){
+                    result = 'Tie';
+                } else if(Move === 'Paper') {
+                    result = 'You Lose';
+                } else {
+                    result = 'You Win';
+                }
+            } 
+            
+            else if(playerMove === 'Paper') {
+                if(Move === 'Rock'){
+                    result = 'You Win';
+                } else if(Move === 'Paper') {
+                    result = 'Tie';
+                } else {
+                    result = 'You Lose';
+                }
+            } 
+            
+            else {
+                if(Move === 'Rock'){
+                    result = 'You Lose';
+                } else if(Move === 'Paper') {
+                    result = 'You Win';
+                } else {
+                    result = 'Tie';
+                }
+            }
+            
+            if(result === 'You Win'){
+                score.Win++;
+            } else if(result === 'You Lose'){
+                score.Looses++;
+            } else if(result === 'Tie'){
+                score.Ties++;
+            }
+
+            alert(`You Picked ${playerMove}, Computer Picked ${Move}, ${result}
+Wins: ${score.Win}, Looses: ${score.Looses}, Ties: ${score.Ties}`);
+        }
+    </script>
+    
+</body>
+</html>
