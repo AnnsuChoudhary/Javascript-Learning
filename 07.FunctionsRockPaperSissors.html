@@ -9,22 +9,23 @@
     <h1>Rock Paper Sissors</h1>
 
     <button onclick="
-    game();
+    playGame('Rock');
     ">Rock</button>
 
     <button onclick="
-    game();
+    playGame('Paper');
     ">Paper</button>
 
     <button onclick="
-    game();
+    playGame('Sissors');
     ">Sissors</button>
     
     <script>
-        const compMove = Math.random();
-
+        
         function game(){
+            let compMove = Math.random();
             let Move = '';
+            
             if(compMove >=0 && compMove < 1/3 ){
                 Move = 'Rock';
             }
@@ -34,22 +35,42 @@
             else {
                 Move = 'Sissors';
             }
-            console.log(Move);
-
-            let result = '';
-            if(Move === 'Rock') {
-                result = 'Tie';
-            }
-            else if(Move === 'Paper') {
-                result = 'You Lose';
-            }
-            else {
-                result = 'You Win';
-            }
-            alert(`You Picked Rock, Computer Picked ${Move}, ${result}`);
             
+            return Move;
         }
 
+        function playGame(playerMove){
+            let Move = game();
+            let result = '';
+            
+            if(playerMove === 'Rock'){
+                if(Move === 'Rock'){
+                    result = 'Tie';
+                } else if(Move === 'Paper') {
+                    result = 'You Lose';
+                } else {
+                    result = 'You Win';
+                }
+            } else if(playerMove === 'Paper') {
+                if(Move === 'Rock'){
+                    result = 'You Win';
+                } else if(Move === 'Paper') {
+                    result = 'Tie';
+                } else {
+                    result = 'You Lose';
+                }
+            } else {
+                if(Move === 'Rock'){
+                    result = 'You Lose';
+                } else if(Move === 'Paper') {
+                    result = 'You Win';
+                } else {
+                    result = 'Tie';
+                }
+            }
+            
+            alert(`You Picked ${playerMove}, Computer Picked ${Move}, ${result}`);
+        }
     </script>
     
 </body>
