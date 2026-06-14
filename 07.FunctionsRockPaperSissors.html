@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperSissors</title>
+</head>
+<body>
+    <h1>Rock Paper Sissors</h1>
+
+    <button onclick="
+    game();
+    ">Rock</button>
+
+    <button onclick="
+    game();
+    ">Paper</button>
+
+    <button onclick="
+    game();
+    ">Sissors</button>
+    
+    <script>
+        const compMove = Math.random();
+
+        function game(){
+            let Move = '';
+            if(compMove >=0 && compMove < 1/3 ){
+                Move = 'Rock';
+            }
+            else if(compMove >= 1/3 && compMove < 2/3) {
+                Move = 'Paper';
+            }
+            else {
+                Move = 'Sissors';
+            }
+            console.log(Move);
+
+            let result = '';
+            if(Move === 'Rock') {
+                result = 'Tie';
+            }
+            else if(Move === 'Paper') {
+                result = 'You Lose';
+            }
+            else {
+                result = 'You Win';
+            }
+            alert(`You Picked Rock, Computer Picked ${Move}, ${result}`);
+            
+        }
+
+    </script>
+    
+</body>
+</html>
