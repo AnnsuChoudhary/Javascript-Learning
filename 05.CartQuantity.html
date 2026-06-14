@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Cart Quantity</H1>
+    <p>
+            <button onclick="console.log(`Cart Quantity: ${CartQuantity} `)">Show Quantity</button>
+    
+    <button onclick="
+    if(CartQuantity == 10) {
+        alert('Cart is Full');
+    } else {
+        CartQuantity += 1;
+        console.log(`Cart Quantity: ${CartQuantity} `);
+    }
+    ">Add to Cart</button>
+    
+    <button onclick="
+    if(CartQuantity == 10) {
+        alert('Cart is Full');
+    } else if(CartQuantity <=8) {
+        CartQuantity += 2;
+        console.log(`Cart Quantity: ${CartQuantity} `);
+    } else {
+        alert('Cart Overflow');
+    }
+    ">+2</button>
+    
+    <button onclick="
+    if(CartQuantity == 10) {
+        alert('Cart is Full');
+    } else if(CartQuantity <=7) {
+        CartQuantity += 3;
+        console.log(`Cart Quantity: ${CartQuantity} `);
+    } else {
+        alert('Cart Overflow');
+    }
+    ">+3</button>
+    
+    <button onclick="
+     CartQuantity = 0; 
+     console.log('Cart was Reset'); console.log(`Cart Quantity: ${CartQuantity} `)
+    ">Reset Cart</button>
+
+    </p>
+
+    <p>
+        <button onclick="
+            if(CartQuantity == 0) {
+                alert('Cart Empty');
+            } else if(CartQuantity >= 1){
+                CartQuantity -= 1;
+                console.log(`Cart Quantity: ${CartQuantity} `);
+            } else {
+                alert('Cart Underflow');
+            }">Remove from Cart</button>
+        <button onclick="
+            if(CartQuantity == 0) {
+                alert('Cart Empty');
+            } else if(CartQuantity >= 2){
+                CartQuantity -= 2;
+                console.log(`Cart Quantity: ${CartQuantity} `);
+            } else {
+                alert('Cart Underflow');
+            }
+        ">-2</button>
+        <button onclick="
+            if(CartQuantity == 0) {
+                alert('Cart Empty');
+            } else if(CartQuantity >= 3){
+                CartQuantity -= 3;
+                console.log(`Cart Quantity: ${CartQuantity} `);
+            } else {
+                alert('Cart Underflow');
+            }
+        ">-3</button>
+    </p>
+
+    <script>
+        let CartQuantity = 0;
+    </script>
+</body>
+</html>
