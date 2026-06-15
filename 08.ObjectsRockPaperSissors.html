@@ -24,13 +24,17 @@
     score.Win = 0;
     score.Looses = 0;
     score.Ties = 0;
+    localStorage.setItem('score', JSON.stringify(score));
     ">Reset Score</button>
     <script>
-        
-        const score = {
-            Win : 0,
-            Looses : 0,
-            Ties : 0
+        let score;
+        try {
+            const raw = localStorage.getItem('score');
+            score = raw ? JSON.parse(raw) : {"Win": 0, "Looses": 0, "Ties": 0};
+            if (typeof score !== 'object' || score === null) throw new Error('invalid score');
+        } catch (e) {
+            score = {"Win": 0, "Looses": 0, "Ties": 0};
+            localStorage.setItem('score', JSON.stringify(score));
         }
 
         function game(){
@@ -93,7 +97,7 @@
             }
 
             localStorage.setItem('score', JSON.stringify(score));
-            
+
             alert(`You Picked ${playerMove}, Computer Picked ${Move}, ${result}
 Wins: ${score.Win}, Looses: ${score.Looses}, Ties: ${score.Ties}`);
         }
