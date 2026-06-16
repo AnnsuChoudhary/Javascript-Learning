@@ -41,9 +41,7 @@
             const result = randomNumber < 0.5 ? 'heads' : 'tails';
 
             score[guess === result ? 'wins' : 'losses']++;
-
             let message = guess === result ? 'You win!' : 'You lose!';
-
             localStorage.setItem('score', JSON.stringify(score));
 
             alert(`${message}
