@@ -13,7 +13,9 @@ This repository contains my JavaScript learning journey, including notes, exerci
 - Variables & Data Types
 - Build a Calculator
 - Rock Paper Sissor Game
+- Objects and Functions
+- DOM
 
 ## Goal
 
-Build a strong foundation in JavaScript and create real-world projects for internships and software development roles.
+Build a strong foundation in JavaScript and create real-world projects.
