@@ -8,33 +8,22 @@
 <body>
     <h1>Rock Paper Sissors</h1>
 
-    <button onclick="
-    playGame('Rock');
-    ">Rock</button>
+    <button onclick="playGame('Rock')">Rock</button>
 
-    <button onclick="
-    playGame('Paper');
-    ">Paper</button>
+    <button onclick="playGame('Paper')">Paper</button>
 
-    <button onclick="
-    playGame('Sissors');
-    ">Sissors</button>
+    <button onclick="playGame('Sissors')">Sissors</button>
+
+    <p class="js-senerio"></p>
+    <p class="js-scores"></p>
   
-    <button onclick="
-    score.Win = 0;
-    score.Looses = 0;
-    score.Ties = 0;
-    localStorage.setItem('score', JSON.stringify(score));
-    ">Reset Score</button>
+    <button onclick="resetScore()">Reset Score</button>
+    
     <script>
-        let score;
-        try {
-            const raw = localStorage.getItem('score');
-            score = raw ? JSON.parse(raw) : {"Win": 0, "Looses": 0, "Ties": 0};
-            if (typeof score !== 'object' || score === null) throw new Error('invalid score');
-        } catch (e) {
-            score = {"Win": 0, "Looses": 0, "Ties": 0};
-            localStorage.setItem('score', JSON.stringify(score));
+        let score = {"Win": 0, "Looses": 0, "Ties": 0};
+        const saved = localStorage.getItem('score');
+        if (saved) {
+            score = JSON.parse(saved);
         }
 
         
@@ -98,10 +87,28 @@
             }
 
             localStorage.setItem('score', JSON.stringify(score));
-
-            alert(`You Picked ${playerMove}, Computer Picked ${Move}, ${result}
-Wins: ${score.Win}, Looses: ${score.Looses}, Ties: ${score.Ties}`);
+            updateScoreDisplay();
+            displayResult(playerMove, Move, result);
         }
+
+        function updateScoreDisplay(){
+            document.querySelector('.js-scores').innerText = `Wins: ${score.Win}, Looses: ${score.Looses}, Ties: ${score.Ties}`;
+        }
+
+        function displayResult(playerMove, computerMove, result){
+            document.querySelector('.js-senerio').innerText = `You chose ${playerMove}, computer chose ${computerMove}, result: ${result}`;
+        }
+
+        function resetScore(){
+            score.Win = 0;
+            score.Looses = 0;
+            score.Ties = 0;
+            localStorage.setItem('score', JSON.stringify(score));
+            updateScoreDisplay();
+            document.querySelector('.js-senerio').innerText = 'Score reset.';
+        }
+
+        updateScoreDisplay();
     </script>
     
 </body>

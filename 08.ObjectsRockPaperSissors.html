@@ -27,16 +27,13 @@
     localStorage.setItem('score', JSON.stringify(score));
     ">Reset Score</button>
     <script>
-        let score;
-        try {
-            const raw = localStorage.getItem('score');
-            score = raw ? JSON.parse(raw) : {"Win": 0, "Looses": 0, "Ties": 0};
-            if (typeof score !== 'object' || score === null) throw new Error('invalid score');
-        } catch (e) {
-            score = {"Win": 0, "Looses": 0, "Ties": 0};
-            localStorage.setItem('score', JSON.stringify(score));
+        let score = {"Win": 0, "Looses": 0, "Ties": 0};
+        const saved = localStorage.getItem('score');
+        if (saved) {
+            score = JSON.parse(saved);
         }
 
+        
         function game(){
             let compMove = Math.random();
             let Move = '';
