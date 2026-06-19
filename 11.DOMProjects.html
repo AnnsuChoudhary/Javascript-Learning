@@ -7,45 +7,37 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f7f7f7 0%, #e2f0ff 100%);
+            background: #f4f4f4;
+            color: #333;
             min-height: 100vh;
             margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            color: #1a1a1a;
         }
 
-        body > div {
-            text-align: center;
+        .card {
+            width: min(100%, 380px);
             background: white;
             padding: 2rem;
             border-radius: 16px;
-            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
-            max-width: 380px;
-            width: 100%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
         }
 
         p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            margin: 0 0 1.5rem;
         }
 
         button {
-            background: #ff3b3f;
+            background: #1a73e8;
             border: none;
             color: white;
             font-size: 1rem;
             padding: 0.9rem 1.8rem;
-            border-radius: 999px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.16s ease, box-shadow 0.16s ease;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(255, 59, 63, 0.22);
         }
     </style>
 </head>
