@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Mini Project</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(145deg, #f5f7ff 0%, #fff8e8 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #212121;
+        }
+
+        .calculator {
+            width: min(100%, 420px);
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 24px 42px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #2a3d66;
+        }
+
+        p {
+            margin: 0.4rem 0;
+            color: #555;
+        }
+
+        input,
+        button {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #ccd6f6;
+            border-radius: 14px;
+            font-size: 1rem;
+            padding: 0.95rem 1rem;
+            margin-top: 1rem;
+            box-sizing: border-box;
+        }
+
+        input {
+            background: #f9fbff;
+        }
+
+        button {
+            background: #1f78d1;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        button:hover {
+            background: #1661a8;
+            transform: translateY(-1px);
+        }
+
+        #js-result {
+            margin-top: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f3d82;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Amazon Shipping Calculator</h1>
+
+    <p>Order under $40 = + $10 Shipping</p>
+    <p>Orders Above $40 = Free Shipping</p>
+
+    <input type="number" id="js-order" placeholder="Enter Order Amount" onkeydown="keyCalc(event)">
+    <button id="js-calculate" onclick="calculation()">Calculate</button>
+
+    <p id="js-result">$0</p>
+    </div>
+    <script>
+
+        function keyCalc(event){
+            if(event.key === 'Enter'){
+                calculation();
+            }
+
+        }
+        let orderAmount = document.querySelector('#js-order').value;
+        
+        function calculation(){
+            orderAmount = document.querySelector('#js-order').value;
+
+            if(orderAmount < 40){
+                document.querySelector('#js-result').innerText = `$${parseFloat(orderAmount) + 10}`;
+            }
+            else{
+                document.querySelector('#js-result').innerText = `$${orderAmount}`;
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
