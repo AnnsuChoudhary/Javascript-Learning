@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays ToDo List</title>
+</head>
+<body>
+
+    <p>To Do List</p>
+    <input type="text" id="js-input" placeholder="Enter a task">
+    <input type="date" id="js-input-date">
+    <button id="js-add3" onclick="addTask()">Add</button>
+    <p id="js-result"></p>
+
+    <script>
+
+        const taskArray = [];
+        
+        function addTask(){
+            const input = document.querySelector('#js-input').value;
+            const inputDate = document.querySelector('#js-input-date').value;
+
+            if(input && inputDate){
+                const task = {
+                    name: input,
+                    date: inputDate
+                };
+
+                taskArray.push(task);
+                document.querySelector('#js-result').innerText = '';
+
+                for(let i = 0; i < taskArray.length; i++){
+                    document.querySelector('#js-result').innerHTML += `<span>${taskArray[i].name} - ${taskArray[i].date}</span> <button onclick="deleteTask(${i})">Delete</button> <br>`;
+                }
+                
+                
+            }document.querySelector('#js-input').value = '';
+            document.querySelector('#js-input-date').value = '';
+        }
+
+        function deleteTask(index){
+            taskArray.splice(index, 1);
+            document.querySelector('#js-result').innerText = '';
+
+            for(let i = 0; i < taskArray.length; i++){
+                document.querySelector('#js-result').innerHTML += `<span>${taskArray[i].name} - ${taskArray[i].date}</span> <button onclick="deleteTask(${i})">Delete</button> <br>`;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
