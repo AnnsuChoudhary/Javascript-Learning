@@ -20,7 +20,7 @@
             margin: 0;
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 24px;
             background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
@@ -47,18 +47,19 @@
             line-height: 1.6;
         }
 
+
         .todo-inputs {
-            display: grid;
+            display: flex;
             gap: 12px;
             margin-bottom: 18px;
+            align-items: center;
         }
 
         input,
         button {
-            width: 100%;
             border-radius: 14px;
             border: 1px solid #d1d5db;
-            padding: 14px 16px;
+            padding: 12px 14px;
             font-size: 1rem;
             transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
         }
@@ -70,15 +71,29 @@
             box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.16);
         }
 
+
         input {
             background: #f9fafb;
         }
 
-        button {
+        /* make the text input take more space, date smaller, button auto */
+        .todo-inputs input[type="text"]{
+            flex: 2 1 0;
+            width: auto;
+        }
+
+        .todo-inputs input[type="date"]{
+            flex: 1 1 0;
+            width: auto;
+        }
+
+        .todo-inputs button {
             background: #4f46e5;
             color: #ffffff;
             border: none;
             cursor: pointer;
+            padding: 12px 18px;
+            flex: 0 0 auto;
         }
 
         button:hover {
@@ -86,7 +101,8 @@
         }
 
         #js-result {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
@@ -95,23 +111,28 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 14px 16px;
+            background: #ffffff;
+            border: 1px solid #e6eefc;
+            border-radius: 12px;
+            padding: 10px 12px;
+            box-shadow: 0 6px 18px rgba(99,102,241,0.04);
         }
 
         .task-row span {
             display: block;
-            color: #111827;
-            line-height: 1.4;
+            color: #0f172a;
+            line-height: 1.2;
+            font-weight: 600;
         }
 
         .task-row button {
             width: auto;
-            padding: 10px 14px;
+            padding: 8px 12px;
             background: #ef4444;
             border: none;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
         }
 
         .task-row button:hover {
@@ -138,35 +159,34 @@
 
         const taskArray = [];
         
+        function renderTasks(){
+            const container = document.querySelector('#js-result');
+            container.innerHTML = '';
+            for(let i = 0; i < taskArray.length; i++){
+                const t = taskArray[i];
+                container.innerHTML += `<div class="task-row"><span>${t.name} — ${t.date}</span><button onclick="deleteTask(${i})">Delete</button></div>`;
+            }
+        }
+
         function addTask(){
-            const input = document.querySelector('#js-input').value;
-            const inputDate = document.querySelector('#js-input-date').value;
+            const inputEl = document.querySelector('#js-input');
+            const dateEl = document.querySelector('#js-input-date');
+            const input = inputEl.value.trim();
+            const inputDate = dateEl.value;
 
             if(input && inputDate){
-                const task = {
-                    name: input,
-                    date: inputDate
-                };
-
+                const task = { name: input, date: inputDate };
                 taskArray.push(task);
-                document.querySelector('#js-result').innerText = '';
+                renderTasks();
+            }
 
-                for(let i = 0; i < taskArray.length; i++){
-                    document.querySelector('#js-result').innerHTML += `<span>${taskArray[i].name} - ${taskArray[i].date}</span> <button onclick="deleteTask(${i})">Delete</button> <br>`;
-                }
-                
-                
-            }document.querySelector('#js-input').value = '';
-            document.querySelector('#js-input-date').value = '';
+            inputEl.value = '';
+            dateEl.value = '';
         }
 
         function deleteTask(index){
             taskArray.splice(index, 1);
-            document.querySelector('#js-result').innerText = '';
-
-            for(let i = 0; i < taskArray.length; i++){
-                document.querySelector('#js-result').innerHTML += `<span>${taskArray[i].name} - ${taskArray[i].date}</span> <button onclick="deleteTask(${i})">Delete</button> <br>`;
-            }
+            renderTasks();
         }
 
 
