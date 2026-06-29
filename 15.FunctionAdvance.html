@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Functions</title>
+</head>
+<body>
+    
+    <script>
+
+        // shortcut function
+        //hoisting : calling function way before declaration, used in shortcut function
+        greet();
+
+        function greet() {
+            console.log("Hello, welcome to the world of functions!");
+        }
+
+        // Anonymous function
+        // functions are Values, so we can assign them to variables
+        const fun = function greet(){
+            console.log("Hello, welcome to the world of functions!");
+        }
+        console.log(fun);
+        
+        // calling the function using the variable name
+        fun(); 
+
+        // using functions as objects elements also called methods
+        const obj = {
+            name: "Annsu",
+            greet: function greeting(){
+                console.log("Hello, welcome to the world of functions!");
+            }
+        }
+
+        // calling the method using the object name and dot notation
+        obj.greet();
+
+        // Callback function
+        function greet(newfun){
+            //as new fun is itself a function, we can call it using () operator
+            newfun();
+        }
+
+        // Passing a function as an argument to another function
+        greet(function newfun(){
+            console.log("Hello, welcome to the world of functions!");
+        });
+
+
+    </script>
+</body>
+</html>
