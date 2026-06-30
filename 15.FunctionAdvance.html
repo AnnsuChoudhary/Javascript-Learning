@@ -11,9 +11,9 @@
 
         // shortcut function
         //hoisting : calling function way before declaration, used in shortcut function
-        greet();
+        greetMessage();
 
-        function greet() {
+        function greetMessage() {
             console.log("Hello, welcome to the world of functions!");
         }
 
@@ -39,15 +39,33 @@
         obj.greet();
 
         // Callback function
-        function greet(newfun){
-            //as new fun is itself a function, we can call it using () operator
-            newfun();
+        function executeCallback(callback){
+            // as callback is itself a function, we can call it using () operator
+            callback();
         }
 
         // Passing a function as an argument to another function
-        greet(function newfun(){
+        executeCallback(function callbackFunction(){
             console.log("Hello, welcome to the world of functions!");
         });
+
+        // over till here,
+
+
+        //Practical Examples
+        setTimeout(function(){
+            console.log("Hello World");
+        }, 7000);
+        // this is a asynchronous code, it won't wait for 7 seconds to execute the next line of code, 
+        // it will execute the next line of code immediately and 
+        // after 7 seconds it will execute the function inside setTimeout
+
+        // setInterval, similar, just keep running code in every 3 second
+        setInterval(function(){
+            console.log("Interval");
+        }, 3000);
+
+
 
 
     </script>
