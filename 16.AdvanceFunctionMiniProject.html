@@ -68,6 +68,7 @@
         <p class="js-scores"></p>
   
         <button class="reset-button" onclick="resetScore()">Reset Score</button>
+        <button class="auto-play" onclick="autoplay()">Auto Play</button>
     </main>
     
     <script>
@@ -165,6 +166,23 @@
         }
 
         updateScoreDisplay();
+
+        let isauto = false;
+        let intervalId;
+
+        function autoplay(){
+            if(!isauto){
+                intervalId = setInterval(function(){
+                    const playermove = game();
+                    playGame(playermove);
+                }, 1000);
+                isauto = true;
+            }
+            else{
+                clearInterval(intervalId);
+                isauto = false;
+            }
+        }
     </script>
     
 </body>
