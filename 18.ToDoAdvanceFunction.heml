@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Function ToDo List</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f4f7fc;
+            color: #111827;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+        }
+
+        .todo-app {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+            padding: 32px;
+        }
+
+        .todo-app h1 {
+            margin: 0 0 10px;
+            font-size: 2rem;
+            letter-spacing: -0.03em;
+        }
+
+        .todo-app p {
+            margin: 0 0 24px;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+
+        .todo-inputs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            align-items: center;
+        }
+
+        input,
+        button {
+            border-radius: 14px;
+            border: 1px solid #d1d5db;
+            padding: 12px 14px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        input:focus,
+        button:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.16);
+        }
+
+
+        input {
+            background: #f9fafb;
+        }
+
+        /* make the text input take more space, date smaller, button auto */
+        .todo-inputs input[type="text"]{
+            flex: 2 1 0;
+            width: auto;
+        }
+
+        .todo-inputs input[type="date"]{
+            flex: 1 1 0;
+            width: auto;
+        }
+
+        .todo-inputs button {
+            background: #4f46e5;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            padding: 12px 18px;
+            flex: 0 0 auto;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        #js-result {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .task-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: #ffffff;
+            border: 1px solid #e6eefc;
+            border-radius: 12px;
+            padding: 10px 12px;
+            box-shadow: 0 6px 18px rgba(99,102,241,0.04);
+        }
+
+        .task-row span {
+            display: block;
+            color: #0f172a;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .task-row button {
+            width: auto;
+            padding: 8px 12px;
+            background: #ef4444;
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .task-row button:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-app">
+        <h1>ToDo List</h1>
+        <p>Add tasks with a due date and remove items when they are complete.</p>
+
+        <div class="todo-inputs">
+            <input type="text" id="js-input" placeholder="Enter a task">
+            <input type="date" id="js-input-date">
+            <button id="js-add3" onclick="addTask()">Add</button>
+        </div>
+
+        <div id="js-result"></div>
+    </div>
+
+    <script>
+
+        const taskArray = [];
+        
+        function renderTasks(){
+            const container = document.querySelector('#js-result');
+            container.innerHTML = '';
+            for(let i = 0; i < taskArray.length; i++){
+                const t = taskArray[i];
+                container.innerHTML += `<div class="task-row"><span>${t.name} — ${t.date}</span><button onclick="deleteTask(${i})">Delete</button></div>`;
+            }
+        }
+
+        function addTask(){
+            const inputEl = document.querySelector('#js-input');
+            const dateEl = document.querySelector('#js-input-date');
+            const input = inputEl.value.trim();
+            const inputDate = dateEl.value;
+
+            if(input && inputDate){
+                const task = { name: input, date: inputDate };
+                taskArray.push(task);
+                renderTasks();
+            }
+
+            inputEl.value = '';
+            dateEl.value = '';
+        }
+
+        function deleteTask(index){
+            taskArray.splice(index, 1);
+            renderTasks();
+        }
+
+
+    </script>
+</body>
+</html>
