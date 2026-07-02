@@ -7,12 +7,39 @@
 </head>
 <body>
 
+    <button class="js-button">Click me</button>
+
     <script>
+
+        // addEventListener used to interact with elements
+        const button = document.querySelector('.js-button');
+        
+        button.addEventListener('click', () => {
+            console.log('Button clicked');
+        });
 
         // Another way to loop through an array.
         ['a', 'b', 'c'].forEach(function(value, index){
             console.log(value, index);
         });
+
+        // Arrow Functions : shorter way to write a function 
+        const funct = (parameter1, parameter2) => {
+            console.log(parameter1 + parameter2);
+            return 30;
+        };
+        
+        //call 
+        const val = funct(20, 50);
+        console.log(val);
+        
+        // Arrow function practice
+        ['a', 'b', 'c'].forEach((value, index) =>{
+            console.log(value, index);
+        });
+
+
+
     </script>
     
 </body>
