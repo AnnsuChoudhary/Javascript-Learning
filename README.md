@@ -15,6 +15,8 @@ This repository contains my JavaScript learning journey, including notes, exerci
 - Rock Paper Sissor Game
 - Objects and Functions
 - DOM
+- Arrays and Functions
+- Advance Functions - 
 
 ## Goal
 
