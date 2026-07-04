@@ -13,10 +13,15 @@
 
         // addEventListener used to interact with elements
         const button = document.querySelector('.js-button');
-        
-        button.addEventListener('click', () => {
+
+        const eventfunction = function(){
             console.log('Button clicked');
-        });
+        };
+        
+        // *** Best Practice to add event Listener instead of onclick ="" ***
+        button.addEventListener('click', eventfunction);
+
+        button.removeEventListener('click', eventfunction);
 
         // Another way to loop through an array.
         ['a', 'b', 'c'].forEach(function(value, index){
