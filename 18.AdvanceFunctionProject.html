@@ -72,6 +72,21 @@
     </main>
     
     <script>
+
+        document.body.addEventListener('keydown', () =>{
+        console.log('keydown');
+        });
+
+        document.body.addEventListener('keydown', (event) =>{
+        if(event.key === 'r'){
+            playGame('Rock');
+        } else if(event.key === 'p'){
+            playGame('Paper');
+        } else if(event.key === 's'){
+            playGame('Scissors');
+        }
+        });
+
         let score = {"Win": 0, "Looses": 0, "Ties": 0};
         const saved = localStorage.getItem('score');
         if (saved) {

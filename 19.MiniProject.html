@@ -3,19 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Project</title>
+    <title>Todo List</title>
 </head>
 <body>
+    <h1>Todo List</h1>
+
+    <input type="text" id="todo-input" placeholder="Add a new task" />
+    <button id="add-button">Add</button>
+    <button id="clear-button">Clear Completed</button>
+
+    <ul id="todo-list"></ul>
 
     <script>
+        const todoInput = document.getElementById('todo-input');
+        const addButton = document.getElementById('add-button');
+        const clearButton = document.getElementById('clear-button');
+        const todoList = document.getElementById('todo-list');
 
-        // add event listener to the button
-        document.querySelector('.js-reset').addEventListener('click', function() {
-            // reset the scores and scenario text
-            document.querySelector('.js-scores').textContent = 'Player: 0 | Computer: 0';
-            document.querySelector('.js-senerio').textContent = 'Make your  move!';
+        function createTodoItem(text) {
+            const li = document.createElement('li');
+            const label = document.createElement('label');
+            const checkbox = document.createElement('input');
+            const removeButton = document.createElement('button');
+
+            checkbox.type = 'checkbox';
+            checkbox.addEventListener('change', () => {
+                label.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+            });
+
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', () => {
+                todoList.removeChild(li);
+            });
+
+            label.textContent = text;
+            label.prepend(checkbox);
+            li.append(label, removeButton);
+            return li;
+        }
+
+        function addTodo() {
+            const text = todoInput.value.trim();
+            if (text === '') {
+                return;
+            }
+
+            const todoItem = createTodoItem(text);
+            todoList.appendChild(todoItem);
+            todoInput.value = '';
+            todoInput.focus();
+        }
+
+        addButton.addEventListener('click', addTodo);
+
+        todoInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                addTodo();
+            }
+        });
+
+        clearButton.addEventListener('click', () => {
+            const items = Array.from(todoList.querySelectorAll('li'));
+            items.forEach((item) => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    todoList.removeChild(item);
+                }
+            });
         });
     </script>
-    
 </body>
 </html>
