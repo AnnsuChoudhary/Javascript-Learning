@@ -42,13 +42,16 @@
                 <p class="nav-second">& Orders</p>
             </div>
             <div class="nav-cart border">
-                <i class="fa-solid fa-cart-shopping"></i>
-                Cart
+                <a href="amazon_cart.html" class="nav-cart-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
+                    <span class="cart-count-badge">0</span>
+                </a>
             </div>
         </div>
         
         <div class="pannel">
-            <div class="pannel-all border">
+            <div class="pannel-all border" id="menu-toggle">
                 <i class="fa-solid fa-bars"></i>
                 <p>All</p>
             </div>
@@ -64,6 +67,44 @@
             </div>
         </div>
     </header>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="sidebar" id="sidebar-menu">
+        <div class="sidebar-header">
+            <h3>Browse Categories</h3>
+            <button id="close-sidebar">×</button>
+        </div>
+        <div class="sidebar-section">
+            <h4>Home Essentials</h4>
+            <p>Furniture</p>
+            <p>Kitchen</p>
+            <p>Decor</p>
+        </div>
+        <div class="sidebar-section">
+            <h4>Women</h4>
+            <p>Fashion</p>
+            <p>Jewelry</p>
+            <p>Beauty</p>
+        </div>
+        <div class="sidebar-section">
+            <h4>Men</h4>
+            <p>Clothing</p>
+            <p>Shoes</p>
+            <p>Accessories</p>
+        </div>
+        <div class="sidebar-section">
+            <h4>Kids & Girls</h4>
+            <p>Toys</p>
+            <p>School Supplies</p>
+            <p>Baby Essentials</p>
+        </div>
+        <div class="sidebar-section">
+            <h4>Electronics</h4>
+            <p>Audio</p>
+            <p>Gaming</p>
+            <p>Smart Home</p>
+        </div>
+    </aside>
 
     <div class="hero-section">
         <div class="hero-message">
@@ -129,6 +170,98 @@
             </div>
         </div>
     </div>
+
+    <section class="promo-banner">
+        <div>
+            <p class="promo-tag">Limited time offer</p>
+            <h2>Save big on home essentials and gadgets</h2>
+            <p>Refresh your space with smart upgrades, kitchen must-haves, and seasonal favorites.</p>
+        </div>
+        <button>Shop deals</button>
+    </section>
+
+    <section class="cart-feature-section">
+        <div class="feature-header">
+            <h2>Cart favorites</h2>
+            <a href="amazon_cart.html">View cart</a>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-image" style="background-image: url('Amazon project Images/box1_image.jpg');"></div>
+                <h3>Stylish Casual Wear</h3>
+                <p>$39.99</p>
+                <button class="add-to-cart-btn" data-name="Stylish Casual Wear" data-price="39.99" data-image="Amazon project Images/box1_image.jpg">Add to cart</button>
+            </div>
+            <div class="feature-card">
+                <div class="feature-image" style="background-image: url('Amazon project Images/box2_image.jpg');"></div>
+                <h3>Daily Wellness Kit</h3>
+                <p>$24.50</p>
+                <button class="add-to-cart-btn" data-name="Daily Wellness Kit" data-price="24.50" data-image="Amazon project Images/box2_image.jpg">Add to cart</button>
+            </div>
+            <div class="feature-card">
+                <div class="feature-image" style="background-image: url('Amazon project Images/box4_image.jpg');"></div>
+                <h3>Smart Audio Headphones</h3>
+                <p>$89.99</p>
+                <button class="add-to-cart-btn" data-name="Smart Audio Headphones" data-price="89.99" data-image="Amazon project Images/box4_image.jpg">Add to cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="deals-section">
+        <div class="feature-header">
+            <h2>Today's deals</h2>
+            <a href="#">See all deals</a>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-image" style="background-image: url('Amazon project Images/box3_image.jpg');"></div>
+                <h3>Ergonomic Office Chair</h3>
+                <p>$129.00</p>
+                <button class="add-to-cart-btn" data-name="Ergonomic Office Chair" data-price="129.00" data-image="Amazon project Images/box3_image.jpg">Add to cart</button>
+            </div>
+            <div class="feature-card">
+                <div class="feature-image" style="background-image: url('Amazon project Images/box6_image.jpg');"></div>
+                <h3>Pet Grooming Starter Set</h3>
+                <p>$17.99</p>
+                <button class="add-to-cart-btn" data-name="Pet Grooming Starter Set" data-price="17.99" data-image="Amazon project Images/box6_image.jpg">Add to cart</button>
+            </div>
+            <div class="feature-card">
+                <div class="feature-image" style="background-image: url('Amazon project Images/box7_image.jpg');"></div>
+                <h3>Creative Toy Bundle</h3>
+                <p>$34.95</p>
+                <button class="add-to-cart-btn" data-name="Creative Toy Bundle" data-price="34.95" data-image="Amazon project Images/box7_image.jpg">Add to cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="best-sellers-section">
+        <div class="feature-header">
+            <h2>Best sellers in electronics</h2>
+            <a href="#">Explore more</a>
+        </div>
+        <div class="best-seller-grid">
+            <div class="best-seller-card">
+                <h3>Portable Speaker</h3>
+                <p>Great sound, compact design</p>
+                <span>$59.99</span>
+            </div>
+            <div class="best-seller-card">
+                <h3>Smart Watch</h3>
+                <p>Health tracking and notifications</p>
+                <span>$79.00</span>
+            </div>
+            <div class="best-seller-card">
+                <h3>Wireless Charger</h3>
+                <p>Fast charging for everyday use</p>
+                <span>$24.50</span>
+            </div>
+            <div class="best-seller-card">
+                <h3>Gaming Mouse</h3>
+                <p>High precision and sleek style</p>
+                <span>$44.99</span>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="foot-pannel1">

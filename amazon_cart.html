@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="amazon.css">
+    <link rel="stylesheet" href="amazon_cart.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo border">
+                <a href="amazon.html" class="logo-link">
+                    <div class="logo"></div>
+                </a>
+            </div>
+            <div class="nav-search">
+                <select class="search-select">
+                    <option>All</option>
+                </select>
+                <input placeholder="Search Amazon" class="search-input">
+                <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+            <div class="nav-cart border">
+                <a href="amazon_cart.html" class="nav-cart-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
+                    <span class="cart-count-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <section class="cart-items-section">
+            <div class="cart-head">
+                <h1>Shopping Cart</h1>
+                <p>Price</p>
+            </div>
+            <div id="cart-items-container"></div>
+        </section>
+
+        <aside class="cart-summary">
+            <p class="summary-text">Subtotal (<span id="cart-item-count">0</span> items): <span id="subtotal-price">$0.00</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+            <a href="amazon.html" class="continue-shopping">Continue shopping</a>
+        </aside>
+    </main>
+
+    <script src="amazon.js"></script>
+    <script src="amazon_cart.js"></script>
+</body>
+</html>
