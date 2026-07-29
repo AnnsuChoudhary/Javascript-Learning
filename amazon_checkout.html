@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="amazon.css">
+    <link rel="stylesheet" href="amazon_checkout.css">
+</head>
+<body>
+    <header class="checkout-header">
+        <a href="amazon.html" class="checkout-brand">
+            <div class="checkout-logo">amazon</div>
+            <span>Checkout</span>
+        </a>
+        <div class="checkout-secure">
+            <i class="fa-solid fa-lock"></i>
+            <span>Secure checkout</span>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <section class="checkout-form-section">
+            <div class="section-card">
+                <h2>Shipping address</h2>
+                <form id="checkout-form" class="checkout-form">
+                    <div class="form-row">
+                        <label>
+                            Full name
+                            <input type="text" name="name" placeholder="John Doe" required>
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                    </div>
+
+                    <label>
+                        Address line 1
+                        <input type="text" name="address1" placeholder="123 Main Street" required>
+                    </label>
+
+                    <label>
+                        Address line 2
+                        <input type="text" name="address2" placeholder="Apartment, suite, unit">
+                    </label>
+
+                    <div class="form-row">
+                        <label>
+                            City
+                            <input type="text" name="city" placeholder="Mumbai" required>
+                        </label>
+                        <label>
+                            State
+                            <select name="state" required>
+                                <option value="">Select state</option>
+                                <option>Maharashtra</option>
+                                <option>Delhi</option>
+                                <option>Karnataka</option>
+                                <option>Gujarat</option>
+                                <option>Tamil Nadu</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            ZIP code
+                            <input type="text" name="zip" placeholder="400001" required>
+                        </label>
+                        <label>
+                            Phone number
+                            <input type="tel" name="phone" placeholder="9876543210" required>
+                        </label>
+                    </div>
+
+                    <div class="payment-box">
+                        <h3>Payment method</h3>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" checked>
+                            <span>Credit / Debit card</span>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                Card number
+                                <input type="text" name="cardNumber" placeholder="4242 4242 4242 4242" required>
+                            </label>
+                            <label>
+                                Name on card
+                                <input type="text" name="cardName" placeholder="John Doe" required>
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                Expiry date
+                                <input type="month" name="expiry" required>
+                            </label>
+                            <label>
+                                CVV
+                                <input type="text" name="cvv" placeholder="123" required>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="place-order-btn">Place your order</button>
+                    <p class="form-note">By placing this order, you agree to Amazon-style terms and conditions.</p>
+                    <div id="checkout-message" class="checkout-message"></div>
+                </form>
+            </div>
+        </section>
+
+        <aside class="checkout-summary-section">
+            <div class="summary-card">
+                <h2>Order summary</h2>
+                <div id="checkout-items" class="checkout-items"></div>
+
+                <div class="summary-breakdown">
+                    <div><span>Items</span><span id="summary-items-total">$0.00</span></div>
+                    <div><span>Shipping</span><span id="summary-shipping">$0.00</span></div>
+                    <div><span>Estimated tax</span><span id="summary-tax">$0.00</span></div>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="summary-total">$0.00</span>
+                </div>
+
+                <a href="amazon_cart.html" class="secondary-link">Back to cart</a>
+            </div>
+        </aside>
+    </main>
+
+    <script src="amazon.js"></script>
+    <script src="amazon_checkout.js"></script>
+</body>
+</html>

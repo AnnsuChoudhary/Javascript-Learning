@@ -48,10 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const openAmazonSearch = (query) => {
     const trimmed = query.trim();
+
     if (!trimmed) {
-      searchInput.focus();
+      searchInput?.focus();
       return;
     }
+
     const url = `https://www.amazon.in/s?k=${encodeURIComponent(trimmed)}`;
     window.open(url, "_blank", "noopener");
   };

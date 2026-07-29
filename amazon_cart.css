@@ -112,13 +112,18 @@
 }
 
 .checkout-btn {
+    display: block;
     width: 100%;
+    box-sizing: border-box;
     background: #ffd814;
     border: none;
     border-radius: 8px;
     padding: 10px 12px;
     font-weight: 700;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #111;
 }
 
 .continue-shopping {
