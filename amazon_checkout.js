@@ -75,6 +75,21 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutMessage.innerHTML = '<p class="success-message">🎉 Order placed successfully. Your package is on the way.</p>';
     }
 
+    const orderRecord = {
+      id: `ORD-${Date.now()}`,
+      date: new Date().toLocaleDateString(),
+      status: "Delivered",
+      items: getCartItems().map((item) => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price * item.quantity,
+      })),
+    };
+
+    const orders = JSON.parse(localStorage.getItem("amazonOrders") || "[]") || [];
+    orders.unshift(orderRecord);
+    localStorage.setItem("amazonOrders", JSON.stringify(orders));
+
     saveCartItems([]);
     updateCartCount();
     renderSummary();
