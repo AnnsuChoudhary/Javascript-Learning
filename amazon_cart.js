@@ -1,28 +1,10 @@
+import { getCartItems, saveCartItems, updateCartCount } from "./amazonLibrary.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const cartItemsContainer = document.querySelector("#cart-items-container");
   const cartItemCount = document.querySelector("#cart-item-count");
   const cartSubtotal = document.querySelector("#subtotal-price");
   const cartCountBadge = document.querySelector(".cart-count-badge");
-  const cartStorageKey = "amazonCartItems";
-
-  const getCartItems = () => {
-    try {
-      return JSON.parse(localStorage.getItem(cartStorageKey)) || [];
-    } catch (error) {
-      return [];
-    }
-  };
-
-  const saveCartItems = (items) => {
-    localStorage.setItem(cartStorageKey, JSON.stringify(items));
-  };
-
-  const updateCartCount = () => {
-    const totalItems = getCartItems().reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCountBadge) {
-      cartCountBadge.textContent = totalItems;
-    }
-  };
 
   const changeItemQuantity = (name, action) => {
     const cartItems = getCartItems();
@@ -39,14 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (existingItem.quantity <= 0) {
         const filteredItems = cartItems.filter((item) => item.name !== name);
         saveCartItems(filteredItems);
-        updateCartCount();
+        updateCartCount(cartCountBadge);
         renderCartPage();
         return;
       }
     }
 
     saveCartItems(cartItems);
-    updateCartCount();
+    updateCartCount(cartCountBadge);
     renderCartPage();
   };
 
@@ -64,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cartSubtotal) {
         cartSubtotal.textContent = "$0.00";
       }
-      updateCartCount();
+      updateCartCount(cartCountBadge);
       return;
     }
 
@@ -106,12 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", () => {
         const cartItemsAfterRemove = getCartItems().filter((item) => item.name !== button.dataset.name);
         saveCartItems(cartItemsAfterRemove);
-        updateCartCount();
+        updateCartCount(cartCountBadge);
         renderCartPage();
       });
     });
 
-    updateCartCount();
+    updateCartCount(cartCountBadge);
   };
 
   renderCartPage();

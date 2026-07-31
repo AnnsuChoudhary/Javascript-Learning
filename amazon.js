@@ -1,3 +1,5 @@
+import { addItemToCart, updateCartCount } from "./amazonLibrary.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".search-input");
   const searchIcon = document.querySelector(".search-icon");
@@ -11,40 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebarOverlay = document.querySelector("#sidebar-overlay");
   const closeSidebarButton = document.querySelector("#close-sidebar");
   const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
-  const cartStorageKey = "amazonCartItems";
-
-  const getCartItems = () => {
-    try {
-      return JSON.parse(localStorage.getItem(cartStorageKey)) || [];
-    } catch (error) {
-      return [];
-    }
-  };
-
-  const saveCartItems = (items) => {
-    localStorage.setItem(cartStorageKey, JSON.stringify(items));
-  };
-
-  const updateCartCount = () => {
-    const totalItems = getCartItems().reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCountBadge) {
-      cartCountBadge.textContent = totalItems;
-    }
-  };
-
-  const addItemToCart = (product) => {
-    const cartItems = getCartItems();
-    const existingItem = cartItems.find((item) => item.name === product.name);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cartItems.push({ ...product, quantity: 1 });
-    }
-
-    saveCartItems(cartItems);
-    updateCartCount();
-  };
 
   const openAmazonSearch = (query) => {
     const trimmed = query.trim();
@@ -97,11 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (addToCartButtons.length) {
     addToCartButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        addItemToCart({
-          name: button.dataset.name,
-          price: Number(button.dataset.price),
-          image: button.dataset.image,
-        });
+        addItemToCart(
+          {
+            name: button.dataset.name,
+            price: Number(button.dataset.price),
+            image: button.dataset.image,
+          },
+          cartCountBadge
+        );
         button.textContent = "Added to cart";
         setTimeout(() => {
           button.textContent = "Add to cart";
@@ -119,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   closeSidebarButton?.addEventListener("click", toggleSidebar);
   sidebarOverlay?.addEventListener("click", toggleSidebar);
 
-  updateCartCount();
+  updateCartCount(cartCountBadge);
 
   if (copyrightText) {
     const currentYear = new Date().getFullYear();

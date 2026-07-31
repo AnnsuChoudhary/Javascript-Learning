@@ -1,5 +1,6 @@
+import { formatCurrency, getCartItems, getOrders, saveCartItems, saveOrders, updateCartCount } from "./amazonLibrary.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  const cartStorageKey = "amazonCartItems";
   const checkoutItemsContainer = document.querySelector("#checkout-items");
   const summaryItemsTotal = document.querySelector("#summary-items-total");
   const summaryShipping = document.querySelector("#summary-shipping");
@@ -8,27 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkoutForm = document.querySelector("#checkout-form");
   const checkoutMessage = document.querySelector("#checkout-message");
   const cartCountBadge = document.querySelector(".cart-count-badge");
-
-  const getCartItems = () => {
-    try {
-      return JSON.parse(localStorage.getItem(cartStorageKey)) || [];
-    } catch (error) {
-      return [];
-    }
-  };
-
-  const saveCartItems = (items) => {
-    localStorage.setItem(cartStorageKey, JSON.stringify(items));
-  };
-
-  const updateCartCount = () => {
-    const totalItems = getCartItems().reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCountBadge) {
-      cartCountBadge.textContent = totalItems;
-    }
-  };
-
-  const formatCurrency = (value) => `$${value.toFixed(2)}`;
 
   const renderSummary = () => {
     const cartItems = getCartItems();
@@ -86,16 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
       })),
     };
 
-    const orders = JSON.parse(localStorage.getItem("amazonOrders") || "[]") || [];
+    const orders = getOrders();
     orders.unshift(orderRecord);
-    localStorage.setItem("amazonOrders", JSON.stringify(orders));
+    saveOrders(orders);
 
     saveCartItems([]);
-    updateCartCount();
+    updateCartCount(cartCountBadge);
     renderSummary();
     checkoutForm.reset();
   });
 
   renderSummary();
-  updateCartCount();
+  updateCartCount(cartCountBadge);
 });
