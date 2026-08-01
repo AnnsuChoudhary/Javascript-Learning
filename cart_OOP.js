@@ -113,3 +113,6 @@ const cart = {
 document.addEventListener("DOMContentLoaded", () => {
   cart.init();
 });
+
+
+console.log(cart);
