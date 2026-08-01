@@ -13,6 +13,9 @@ This project now includes:
 - JavaScript fundamentals such as variables, data types, functions, arrays, objects, and loops
 - Small interactive projects like a calculator, rock-paper-scissors game, coin flip game, and cart quantity counter
 - DOM manipulation and event handling practices
+- Modern JavaScript concepts such as modules, imports, exports, and better code organization
+- Testing topics including manual testing, unit testing, and automated testing practices
+- Jasmine-based test examples and exercises in the Tests-Jaismine folder
 - A more advanced Amazon-inspired website with:
   - a product home page
   - add-to-cart functionality
@@ -21,16 +24,6 @@ This project now includes:
   - local storage persistence for cart items
   - interactive search, sidebar menu, and smooth scrolling features
 
-## Project Files
-
-- amazon.html — main Amazon-style homepage
-- amazon_cart.html — shopping cart page
-- amazon_checkout.html — checkout page
-- amazon_orders.html — orders page
-- amazon.js — homepage interactivity
-- amazon_cart.js — cart page logic
-- amazon_checkout.js — checkout page logic
-- amazon_orders.js — orders page logic
 
 ## How to Use
 
