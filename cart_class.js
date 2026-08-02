@@ -1,12 +1,36 @@
 import { getCartItems, saveCartItems, updateCartCount } from "./amazonLibrary.js";
 
 class Cart {
+  #cartId;
+  #createdAt;
+  #isReady;
+
   constructor(cartName) {
     this.cartName = cartName;
     this.cartItemsContainer = null;
     this.cartItemCount = null;
     this.cartSubtotal = null;
     this.cartCountBadge = null;
+    this.#cartId = Math.floor(Math.random() * 1000);
+    this.#createdAt = new Date().toLocaleString();
+    this.#isReady = false;
+  }
+
+  #logState(message) {
+    console.log(`[${this.cartName}] ${message} (ID: ${this.#cartId})`);
+  }
+
+  #calculateSubtotal(cartItems) {
+    return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }
+
+  #calculateTotalItems(cartItems) {
+    return cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  #markReady() {
+    this.#isReady = true;
+    this.#logState("Cart is ready");
   }
 
   init() {
@@ -15,6 +39,7 @@ class Cart {
     this.cartSubtotal = document.querySelector("#subtotal-price");
     this.cartCountBadge = document.querySelector(".cart-count-badge");
 
+    this.#markReady();
     this.renderCartPage();
   }
 
@@ -69,8 +94,8 @@ class Cart {
       return;
     }
 
-    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const subtotal = this.#calculateSubtotal(cartItems);
+    const totalItems = this.#calculateTotalItems(cartItems);
 
     this.cartItemsContainer.innerHTML = cartItems.map((item) => `
       <div class="cart-item">
