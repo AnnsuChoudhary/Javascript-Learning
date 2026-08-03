@@ -61,7 +61,13 @@ products.forEach(product => {
 });
 
 // Private method access examples
-Tshirt.#setId(102); // This will throw an error because #setId is a private method
-Tshirt.setId(102); // This will also throw an error because setId is not defined as a public method
-Tshirt.id = 102; // This will work because id is a public property
+// Tshirt.#setId(102); // This will throw an error because #setId is a private method
+// Tshirt.setId(102); // This will also throw an error because setId is not defined as a public method
+// Tshirt.id = 102; // This will work because id is a public property
 
+//Built-in Class : Date
+const date = new Date();
+console.log(date);
+
+//inbuilt methods 
+console.log(date.toLocaleTimeString());
