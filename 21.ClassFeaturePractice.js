@@ -71,3 +71,13 @@ console.log(date);
 
 //inbuilt methods 
 console.log(date.toLocaleTimeString());
+
+// Another inbuilt-style helper using Day.js
+function formatDateWithDayjs(date = new Date()) {
+    if (typeof dayjs === 'function') {
+        return dayjs(date).format('DD MMM YYYY');
+    }
+    return new Date(date).toLocaleDateString();
+}
+
+console.log('Formatted date using Day.js:', formatDateWithDayjs());
