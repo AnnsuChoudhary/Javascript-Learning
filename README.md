@@ -1,38 +1,47 @@
 # JavaScript Learning Repository
 
-This repository contains my JavaScript learning journey, including beginner exercises, mini-projects, and a growing Amazon-style web app built while practicing core front-end development concepts.
+This repository documents a hands-on JavaScript learning journey through practice files, interactive small projects, DOM exercises, and a larger Amazon-style web app.
 
-## Learning Resource
+## Learning Resources
 
 - SuperSimpleDev JavaScript Course: https://www.youtube.com/watch?v=EerdGm-ehJQ&t=6679s
+- Project-based practice with HTML, CSS, and JavaScript in browser environments
 
-## Current Progress
+## Repository Overview
 
-This project now includes:
+The repository includes:
 
-- JavaScript fundamentals such as variables, data types, functions, arrays, objects, and loops
-- Small interactive projects like a calculator, rock-paper-scissors game, coin flip game, and cart quantity counter
-- DOM manipulation and event handling practices
-- Modern JavaScript concepts such as modules, imports, exports, and better code organization
-- Testing topics including manual testing, unit testing, and automated testing practices
-- Jasmine-based test examples and exercises in the Tests-Jaismine folder
-- A more advanced Amazon-inspired website with:
-  - a product home page
-  - add-to-cart functionality
-  - cart page quantity updates and removal
-  - a checkout page and orders page
-  - local storage persistence for cart items
-  - interactive search, sidebar menu, and smooth scrolling features
+- Beginner JavaScript fundamentals: variables, data types, functions, arrays, objects, loops, and conditionals
+- DOM manipulation exercises for building interactive UI components
+- Mini-projects such as calculator, rock-paper-scissors, coin flip game, and cart quantity counter
+- Advanced function practice, callbacks, promises, and asynchronous JavaScript
+- Browser-based testing examples with Jasmine in `Tests-Jaismine`
+- An Amazon-inspired web app with product browsing, cart, checkout, and orders pages
 
+## Key Files and Projects
+
+- `01.HTML,CSS,JS.html` to `20.TestPracticeCode.html` – sequential beginner learning files covering basic JS concepts
+- `21.ClassFeaturePractice.js` – class practice and object-oriented JavaScript
+- `22.BackendPractice.html` / `23.BackendPractice.js` – backend-related practice and examples
+- `24.Promises.js` – promise-based asynchronous JavaScript practice
+- `amazon.html`, `amazon.css`, `amazon.js` – Amazon-style landing page and product browsing
+- `amazon_cart.html`, `amazon_cart.css`, `amazon_cart.js` – shopping cart page with quantity management
+- `amazon_checkout.html`, `amazon_checkout.css`, `amazon_checkout.js` – checkout flow and order submission
+- `amazon_orders.html`, `amazon_orders.css`, `amazon_orders.js` – orders page showing saved purchases
+- `amazonLibrary.js`, `cart_class.js`, `cart_OOP.js` – reusable code for product data and cart logic
+- `Tests-Jaismine/` – Jasmine test setup and example specs for client-side JavaScript practice
 
 ## How to Use
 
-1. Open the HTML files in a browser to explore the projects.
-2. Start with amazon.html for the main Amazon-style experience.
-3. Navigate to the cart, checkout, and orders pages to see the flow.
+1. Open any HTML file in a browser to run that practice project.
+2. Start with the numbered lesson files to follow the learning path.
+3. Use `amazon.html` for the main Amazon-style app experience.
+4. Open `Tests-Jaismine/jaismine_tests.html` to run Jasmine test cases.
 
-## Learning Goals
+## Progress and Goals
 
-- Strengthen core JavaScript skills
-- Practice real-world DOM and UI interactions
-- Build a practical front-end project step by step
+- Reinforce fundamental JavaScript skills through project work
+- Practice DOM APIs, event handling, and browser storage
+- Explore asynchronous JavaScript with promises
+- Build a cohesive front-end project using modular code and app flow
+- Learn testing fundamentals with Jasmine and manual browser-based validation
