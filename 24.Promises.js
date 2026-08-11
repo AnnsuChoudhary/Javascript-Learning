@@ -43,3 +43,16 @@ new Promise((resolve) =>{
     console.log('Products loaded successfully');
 });
 
+// Promise.all lets us run multiple async tasks in parallel and wait for all of them to complete before proceeding
+Promise.all([
+    new Promise((resolve) => {
+        setTimeout(() => resolve('Products loaded'), 300);
+    }),
+    new Promise((resolve) => {
+        setTimeout(() => resolve('Cart loaded'), 500);
+    })
+]).then((results) => {
+    console.log(results);
+    console.log('All async tasks completed');
+});
+
