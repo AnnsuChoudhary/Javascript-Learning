@@ -56,3 +56,54 @@ Promise.all([
     console.log('All async tasks completed');
 });
 
+
+//Fetch
+
+//Fetch is better way to make HTTP request 
+
+class Product {
+    constructor(productDetails) {
+        Object.assign(this, productDetails);
+    }
+}
+
+class Clothing extends Product {}
+
+let products = [];
+
+function loadProductsFetch() {
+    const promise = fetch('https://supersimplebackend.dev/products')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Request failed: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((productsData) => {
+            products = productsData.map((productDetails) => {
+                if (productDetails.type === 'clothing') {
+                    return new Clothing(productDetails);
+                }
+
+                return new Product(productDetails);
+            });
+
+            console.log('Loaded products');
+            return products;
+        });
+
+    return promise;
+}
+
+loadProductsFetch().catch((error) => {
+    console.error('Could not load products:', error);
+});
+// const xhr = new XMLHttpRequest();
+
+// xhr.addEventListener('load', () => {
+//     console.log(xhr.response);
+// });
+
+// xhr.open('GET', 'https://supersimplebackend.dev/documentation');
+// xhr.send();
+
